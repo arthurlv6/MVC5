@@ -1,0 +1,7 @@
+﻿enable-migrations -ContextTypeName DataLay.DbContexts.DemoDbContext -MigrationsDirectory DbContexts\DemoMigrations
+add-migration -ConfigurationTypeName DataLay.DbContexts.DemoMigrations.Configuration "IntialCreate"
+update-database -ConfigurationTypeName DataLay.DbContexts.DemoMigrations.Configuration
+
+enable-migrations -ContextTypeName DataLay.DbContexts.OperationDbContext -MigrationsDirectory DbContexts\OperationMigrations
+add-migration -ConfigurationTypeName DataLay.DbContexts.OperationMigrations.Configuration "IntialCreate"
+update-database -ConfigurationTypeName DataLay.DbContexts.OperationMigrations.Configuration
