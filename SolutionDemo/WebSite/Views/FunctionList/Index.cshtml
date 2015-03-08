@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2>Function List</h2>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        Global Server Exception control in Global.asax.cs
+    </h3>
+    <p>
+        Exception lastError = Server.GetLastError();
+        <br />
+        Server.ClearError();
+        <br />
+        int statusCode = 0;
+        <br />
+        if (lastError == null) return;
+        <br />
+        statusCode = lastError.GetType() == typeof(HttpException) ? ((HttpException)lastError).GetHttpCode() : 500;
+        <br />
+        RouteData routeData = new RouteData();
+        <br />
+        routeData.Values.Add("controller", "Error");
+        <br />
+        routeData.Values.Add("action", "Index");
+        <br />
+        routeData.Values.Add("message",lastError.Message);
+        <br />
+        routeData.Values.Add("statusCode", statusCode);
+        <br />
+        routeData.Values.Add("exception", lastError);
+        <br />
+        IController controller = new ErrorController();
+        <br />
+        RequestContext requestContext = new RequestContext(new HttpContextWrapper(Context), routeData);
+        <br />
+        controller.Execute(requestContext);
+        <br />
+        Response.End();
+    </p>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        Exception control for controllers
+    </h3>
+    <p>
+        protected override void OnException(ExceptionContext filterContext)
+        <br/>
+        {
+        <br />
+        View("BespokeError").ExecuteResult(ControllerContext);
+        <br />
+        filterContext.ExceptionHandled = true;
+        <br />
+        }
+        <br />
+    </p>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        To get specific file by overriding ActionResult, take getting excel file for example.
+    </h3>
+    <ol>
+        <li>
+            Creating ExcelResult inherits ActionResult
+        </li>
+        <li>
+            public string FileName { get; set; }
+            <br/>
+            public string Path { get; set; }
+            <br />
+            public override void ExecuteResult(ControllerContext context)
+            <br />
+            {
+            <br />
+            var request = context.HttpContext.Request;
+            var response = context.HttpContext.Response;
+            var canprocess = request.AcceptTypes.Contains("application/vnd.ms-excel");
+            <br />
+            //if (canprocess)
+            <br />
+            //{
+            <br />
+            response.Clear();
+            <br />
+            response.AddHeader("content-disposition", "attachment;filename=" + FileName);
+            <br />
+            response.ContentType = "application/vnd.ms-excel";
+            <br />
+            response.WriteFile(context.HttpContext.Server.MapPath(Path));
+            <br />
+            //}
+            <br />
+            }
+        </li>
+        <li>
+            public ActionResult ViewFile(int id)
+            <br />
+            {
+            <br />
+            var path = string.Format("~/Files/temp0{0}.xlsx", id);
+            <br />
+            return new ExcelResult
+            <br />
+            {
+            <br />
+            FileName = "sample.xlsx",
+            <br />
+            Path = path
+            <br />
+            };
+            <br />
+            }
+        </li>
+    </ol>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        Global action filter for IP restriction
+    </h3>
+    <ol>
+        <li>
+            adding class AuthorizeIPAddressAttribute
+        </li>
+        <li>
+            adding the new class in filterConfig file like filters.Add(new AuthorizeIPAddressAttribute());
+        </li>
+        <li>
+            setting up web.config
+            <p>
+                @("<add value='127.0.0.1,192.168.0.1,::1' key='AllowedIPAddresses' />")
+            </p>
+        </li>
+    </ol>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        Data cache usage in management controller
+    </h3>
+    <p>
+        var cacheKey = string.Format("user_{0}", userId);
+        <br/>
+        @("var userLogs = HttpContext.Cache[cacheKey] as List<operationrecord>;")
+        <br />
+        if (userLogs == null)
+        <br />
+        {
+        <br />
+        userLogs= new SystemManagement().GetLogs(userId);
+        <br />
+        HttpContext.Cache.Add(
+        <br />
+        cacheKey,
+        <br />
+        userLogs,
+        <br />
+        null,
+        <br />
+        DateTime.Now.AddSeconds(10),
+        <br />
+        Cache.NoSlidingExpiration,
+        <br />
+        CacheItemPriority.Normal, null
+        <br />
+        );
+        <br />
+        }
+        <br />
+        model.Logs = userLogs;
+        <br />
+    </p>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        Implement Dependence injection by using structureMap
+    </h3>
+    <p>
+        @Html.Encode("x.For)<ISponsor>().Use<Sponsor>();")
+        <br />
+        private ISponsor _sponsor;
+        <br />
+        public AreasController(ISponsor sponsor)
+        {
+        _sponsor = sponsor;
+        }
+    </p>
+</div>
+<script type="text/javascript">
+   
+    </script>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $(".container h3").next().css("display", "none");
+        });
+        function controlShowTip(id) {
+
+            var control = $(id).next();
+
+            $(control).slideToggle('swing');
+        }
+    </script>
+  }
