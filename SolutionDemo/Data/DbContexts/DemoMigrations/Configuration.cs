@@ -1,3 +1,6 @@
+using System.Collections.ObjectModel;
+using DataModel.Entities;
+
 namespace DataModel.DbContexts.DemoMigrations
 {
     using System;
@@ -5,29 +8,28 @@ namespace DataModel.DbContexts.DemoMigrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<DataModel.DbContexts.DemoDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DataModel.DbContexts.DemoDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
             MigrationsDirectory = @"DbContexts\DemoMigrations";
         }
 
         protected override void Seed(DataModel.DbContexts.DemoDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            for (int i = 0; i < 50; i++)
+            {
+                var order = new Order() { Customer = "Customer_" + i, CreateDate = DateTime.Now, CustomerPhone = "0210578463", Discount = 15, DeliveryFee = 20, OrderProducts = new Collection<OrderProduct>() };
+                for (int j = 1; j < 4; j++)
+                {
+                    if (i % 2 == 0)
+                        order.OrderProducts.Add(new OrderProduct() { Cost = 70, Price = 120, Quantity = j, Name = "Product" + j, Profile = string.Format("car{0}.jpg", j) });
+                    order.OrderProducts.Add(new OrderProduct() { Cost = 70, Price = 120, Quantity = j, Name = "Product" + j, Profile = string.Format("clothes{0}.jpg", j) });
+                }
+                context.Orders.AddOrUpdate(order);
+            }
+            context.SaveChanges();
         }
     }
 }

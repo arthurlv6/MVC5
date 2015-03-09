@@ -8,6 +8,66 @@ namespace DataModel.DbContexts.DemoMigrations
         public override void Up()
         {
             CreateTable(
+                "dbo.ErrorLogs",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        EventUtc = c.DateTime(),
+                        DeviceId = c.String(),
+                        Message = c.String(),
+                        MessageDump = c.String(),
+                        MethodName = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.OperationRecords",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Type = c.String(maxLength: 10),
+                        UserId = c.String(),
+                        DateTime = c.DateTime(nullable: false),
+                        Ip = c.String(maxLength: 20),
+                        Controller = c.String(maxLength: 100),
+                        Action = c.String(maxLength: 100),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.OrderProducts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Quantity = c.Double(nullable: false),
+                        Price = c.Double(nullable: false),
+                        Cost = c.Double(nullable: false),
+                        Profile = c.String(),
+                        Order_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Orders", t => t.Order_Id)
+                .Index(t => t.Order_Id);
+            
+            CreateTable(
+                "dbo.Orders",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Warehouse = c.String(),
+                        Customer = c.String(),
+                        CustomerPhone = c.String(),
+                        Operator = c.String(),
+                        Salesman = c.String(),
+                        CreateDate = c.DateTime(nullable: false),
+                        Discount = c.Double(nullable: false),
+                        DeliveryFee = c.Double(nullable: false),
+                        OtherFee = c.Double(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -84,17 +144,23 @@ namespace DataModel.DbContexts.DemoMigrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.OrderProducts", "Order_Id", "dbo.Orders");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.OrderProducts", new[] { "Order_Id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Orders");
+            DropTable("dbo.OrderProducts");
+            DropTable("dbo.OperationRecords");
+            DropTable("dbo.ErrorLogs");
         }
     }
 }

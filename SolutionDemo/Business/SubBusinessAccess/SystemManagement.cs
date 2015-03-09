@@ -12,19 +12,12 @@ namespace Business.SubBusinessAccess
     {
         public void UserLoginRecord(OperationRecord input)
         {
-            using (var db = new DemoDbContext())
-            {
                 db.OperationRecords.Add(input);
                 db.SaveChanges();
-            }
         }
-
         public List<OperationRecord> GetLogs(string UserId)
         {
-            using (var db = new DemoDbContext())
-            {
                 return db.OperationRecords.Where(d=>d.UserId==UserId).ToList();
-            }
         } 
     }
 }

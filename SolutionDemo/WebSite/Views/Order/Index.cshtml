@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataModel.Entities.Area>
+﻿@model IEnumerable<DataModel.Entities.Order>
 
 @{
     ViewBag.Title = "Index";
@@ -10,36 +10,36 @@
 <section id="portfolio">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown">Children in need</h2>
+            <h2 class="section-title text-center wow fadeInDown">Your Orders</h2>
         </div>
         <div class="text-center">
             <ul class="portfolio-filter">
                 <li><a class="active" href="#" data-filter="*">All areas</a></li>
                 @foreach (var item in Model)
                 {
-                    <li><a href="#" data-filter=@("."+item.Name)>@item.Name</a></li>
+                    <li><a href="#" data-filter=@("."+item.Customer)>@item.Customer</a></li>
                 }
             </ul><!--/#portfolio-filter-->
         </div>
         <div class="portfolio-items">
             @foreach (var item in Model)
             {
-                foreach (var child in item.Children)
+                foreach (var child in item.OrderProducts)
                 {
-                    <div class="portfolio-item @item.Name">
+                    <div class="portfolio-item @item.Customer">
                         <div class="portfolio-item-inner">
-                            <img class="img-responsive" src="/Outfit/images/portfolio/@(child.Profile).jpg" alt="">
+                            <img class="img-responsive" src="/Outfit/images/portfolio/@(child.Profile)" alt="">
                             <div class="portfolio-info">
                                 <h3>@child.Name</h3>
                                 Lorem Ipsum Dolor Sit
-                                <a class="preview" href="/Outfit/images/portfolio/@(child.Profile).jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                                <a class="preview" href="/Outfit/images/portfolio/@(child.Profile)" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                     </div><!--/.portfolio-item-->
                 }
             }
-            
+
         </div>
-    @Html.Partial("_ExcelFiles")
+        @Html.Partial("_ExcelFiles")
     </div><!--/.container-->
 </section><!--/#portfolio-->

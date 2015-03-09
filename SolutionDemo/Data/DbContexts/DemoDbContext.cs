@@ -18,10 +18,10 @@ namespace DataModel.DbContexts
             
         }
         public DbSet<ErrorLog> ErrorLogs { get; set; }
-        public DbSet<Child> Children { get; set; }
-        public DbSet<Area> Areas { get; set; }
+       
         public DbSet<OperationRecord> OperationRecords { get; set; }
-
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
         public static DemoDbContext Create()
         {
             return new DemoDbContext();

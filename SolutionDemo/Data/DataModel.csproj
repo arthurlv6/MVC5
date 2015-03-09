@@ -53,17 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbContexts\DemoMigrations\201502170357005_IntialCreate.cs" />
-    <Compile Include="DbContexts\DemoMigrations\201502170357005_IntialCreate.Designer.cs">
-      <DependentUpon>201502170357005_IntialCreate.cs</DependentUpon>
+    <Compile Include="DbContexts\DemoDbContext.cs" />
+    <Compile Include="DbContexts\DemoMigrations\201503090033534_IntialCreate.cs" />
+    <Compile Include="DbContexts\DemoMigrations\201503090033534_IntialCreate.Designer.cs">
+      <DependentUpon>201503090033534_IntialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="DbContexts\DemoMigrations\Configuration.cs" />
-    <Compile Include="Entities\Area.cs" />
-    <Compile Include="Entities\Child.cs" />
-    <Compile Include="DbContexts\DemoDbContext.cs" />
     <Compile Include="Entities\ErrorLog.cs" />
     <Compile Include="Entities\IdentityModels.cs" />
     <Compile Include="Entities\OperationRecord.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +74,8 @@
     <Content Include="DbContexts\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbContexts\DemoMigrations\201502170357005_IntialCreate.resx">
-      <DependentUpon>201502170357005_IntialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="DbContexts\DemoMigrations\201503090033534_IntialCreate.resx">
+      <DependentUpon>201503090033534_IntialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

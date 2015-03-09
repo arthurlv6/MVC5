@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Business.SubBusinessAccess;
-using WebSite.Filters;
 
 namespace WebSite.Controllers
 {
-    public class AreasController : Controller
+    public class OrderController : Controller
     {
-        private ISponsor _sponsor;
-        //[LoginFilter]
-        public AreasController(ISponsor sponsor)
+        private IOrderContainer _orderContainer;
+        public OrderController(IOrderContainer orderContainer)
         {
-            _sponsor = sponsor;
+            _orderContainer = orderContainer;
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _orderContainer.Dispose();
+            }
+            base.Dispose(disposing);
         }
         public ActionResult Index()
         {
             try
             {
-                var data = _sponsor.GetAreas();
+                var data = _orderContainer.GetOrders();
                 return View(data);
             }
             catch (Exception)
@@ -42,15 +47,6 @@ namespace WebSite.Controllers
                 View("BespokeError").ExecuteResult(ControllerContext);
                 filterContext.ExceptionHandled = true;
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _sponsor.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

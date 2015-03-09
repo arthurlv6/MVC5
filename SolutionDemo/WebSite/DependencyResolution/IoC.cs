@@ -12,8 +12,8 @@ namespace WebSite {
                                         scan.TheCallingAssembly();
                                         scan.WithDefaultConventions();
                                     });
-                            x.For<ISponsor>().Use<Sponsor>();
-                            
+                            x.For<IHomeContainer>().Use<HomeContainer>();
+                            x.For<IOrderContainer>().Use<OrderContainer>();
                         });
             return ObjectFactory.Container;
         }

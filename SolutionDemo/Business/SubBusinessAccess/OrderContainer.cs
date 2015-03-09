@@ -6,15 +6,14 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Business.ViewModels;
-using DataModel;
 using DataModel.DbContexts;
 using DataModel.Entities;
+
 namespace Business.SubBusinessAccess
 {
-    public interface ISponsor
+    public interface IOrderContainer
     {
-        ApplicationUser GetSponsor(string id);
-        IEnumerable<Area> GetAreas();
+        IEnumerable<Order> GetOrders();
         void RecordException(ErrorLog input, DemoDbContext dbContext);
 
         CommonSearchVm<T> GetSearchResult<T, TOrderBy>(CommonSearchVm<T> condition,
@@ -24,16 +23,11 @@ namespace Business.SubBusinessAccess
         void Dispose();
     }
 
-    public class Sponsor:CommonOperation, ISponsor
+    public class OrderContainer:CommonOperation, IOrderContainer
     {
-        public ApplicationUser GetSponsor(string id)
+        public IEnumerable<Order> GetOrders()
         {
-                return db.Users.Find(id);
-        }
-
-        public IEnumerable<Area> GetAreas()
-        {
-            return db.Areas.Include("Children");
+            return db.Orders.Include("OrderProducts").Take(3);
         }  
     }
 }

@@ -112,8 +112,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubBusinessAccess\Education.cs" />
-    <Compile Include="SubBusinessAccess\Micfinance.cs" />
-    <Compile Include="SubBusinessAccess\Sponsor.cs" />
+    <Compile Include="SubBusinessAccess\HomeContainer.cs" />
+    <Compile Include="SubBusinessAccess\OrderContainer.cs" />
     <Compile Include="SubBusinessAccess\SystemManagement.cs" />
     <Compile Include="ViewModels\CommonSearchVM.cs" />
   </ItemGroup>
