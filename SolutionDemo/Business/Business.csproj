@@ -114,6 +114,7 @@
     <Compile Include="SubBusinessAccess\Education.cs" />
     <Compile Include="SubBusinessAccess\HomeContainer.cs" />
     <Compile Include="SubBusinessAccess\OrderContainer.cs" />
+    <Compile Include="SubBusinessAccess\SwapVisitor.cs" />
     <Compile Include="SubBusinessAccess\SystemManagement.cs" />
     <Compile Include="ViewModels\CommonSearchVM.cs" />
   </ItemGroup>

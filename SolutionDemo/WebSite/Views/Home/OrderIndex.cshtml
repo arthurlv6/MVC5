@@ -1,0 +1,113 @@
+﻿
+@using DataModel.Entities
+@using WebSite.Extension
+@model Business.ViewModels.CommonSearchVm<DataModel.Entities.Order>
+<div class="container">
+
+
+    <div class="box-tools pull-right" style="margin-bottom: 10px;">
+        <table>
+            <tr>
+                @using (Html.BeginForm("OrderIndex", "Home", FormMethod.Post, new { id = "searchform" }))
+            {
+                    <td>
+                        <label>Page @Html.SelectList_Pages("CurrentPage", Model.CurrentPage, Model.TotalPages, new { onchange = "this.form.submit();" })</label>
+                    </td>
+                    <td>
+                        <label>Display @Html.SelectList_PageSize("PerPageSize", Model.PerPageSize, 10, new { onchange = "this.form.submit();" }) records</label>
+                    </td>
+                    <td>
+                        <div class="sidebar-form" style="width: 250px; margin-left: 10px; margin-right: 10px; margin-top: 0px; margin-bottom: 0px">
+                            <div class="input-group ">
+                                @Html.TextBoxFor(model => model.Search, new { @class = "form-control", placeholder = "Search Product Name or Code..." })
+                                <span class="input-group-btn">
+                                    <button type="submit" name="seach" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        @*@Html.DropDownList("SearchTwo", null, htmlAttributes: new { @class = "form-control", onchange = "this.form.submit();" })*@
+                    </td>
+                    <td>
+                        <a href="/Home/OrderIndex" class="btn btn-primary btn-sm" style="color: white; margin-left: 10px; margin-right: 3px;" id="productAdd">Refresh</a>
+                    </td>
+            }
+            </tr>
+        </table>
+    </div>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Customer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().CustomerPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Operator)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Salesman)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Warehouse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Discount)
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Data)
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Operator)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salesman)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Warehouse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @(item.OrderProducts.Sum(d=>d.Price*d.Quantity).ToString("c"))
+                </td>
+                <td>
+                    <a onclick="controlShowTip(this)" style="cursor:pointer">Detail</a>
+                </td>
+            </tr>
+            <tr style="display: none">
+                <td colspan="9" style="background-color: blanchedalmond">
+                    @Html.Partial("_OrderProductDetail", item)
+                </td>
+            </tr>
+    }
+    </table>
+</div>
+<script>
+    function controlShowTip(id) {
+        $(id).parent().parent().next().slideToggle('fast');
+    }
+</script>
+

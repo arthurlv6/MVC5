@@ -27,7 +27,7 @@ namespace Business.SubBusinessAccess
     {
         public IEnumerable<Order> GetOrders()
         {
-            return db.Orders.Include("OrderProducts").Take(3);
+            return db.Orders.Take(3);
         }  
     }
 }

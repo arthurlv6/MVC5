@@ -174,15 +174,19 @@
         _sponsor = sponsor;
         }
     </p>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        Universal Search template
+    </h3>
+    <p>
+        <a href="/Home/OrderIndex">Example Link</a>
+    </p>
 </div>
-<script type="text/javascript">
-   
-    </script>
 @section scripts{
     <script type="text/javascript">
-        $(function () {
+        (function ($) {
             $(".container h3").next().css("display", "none");
-        });
+        })(jQuery);
+       
         function controlShowTip(id) {
 
             var control = $(id).next();

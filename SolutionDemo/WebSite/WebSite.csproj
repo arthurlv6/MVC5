@@ -184,6 +184,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
+    <Compile Include="Extension\PagingHelper.cs" />
     <Compile Include="Filters\AuthorizeIPAddressAttribute.cs" />
     <Compile Include="Filters\ExcelResult.cs" />
     <Compile Include="Filters\OperationRecordingFilter.cs" />
@@ -369,6 +370,8 @@
     <Content Include="Views\Shared\ErrorForbid.cshtml" />
     <Content Include="Views\FunctionList\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Home\OrderIndex.cshtml" />
+    <Content Include="Views\Home\_OrderProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,7 +9,10 @@ namespace DataModel.Entities
 {
     public class Order
     {
-
+        public Order()
+        {
+            this.OrderProducts = new HashSet<OrderProduct>();
+        }
         public int Id { get; set; }
         [DefaultValue("Warehouse Northshore")]
         public string Warehouse { get; set; }

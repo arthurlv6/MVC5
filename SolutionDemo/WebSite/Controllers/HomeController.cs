@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using Business.SubBusinessAccess;
-
+using DataModel.Entities;
+using Business.ViewModels;
 namespace WebSite.Controllers
 {
     public class HomeController : Controller
@@ -46,10 +49,46 @@ namespace WebSite.Controllers
             return View();
         }
 
-        public ActionResult Initialize()
+        public ActionResult OrderIndex()
         {
-            _homeContainer.Initalize();
-            return null;
+            Expression<Func<Order, bool>> searchName = t => true ;
+            var model = new CommonSearchVm<Order>() { CurrentPage = 1, PerPageSize = 10, Func = searchName };
+            var result = _homeContainer.GetSearchResult(model, d => d.Id, SortOrder.Descending);
+            return View(result);
+        }
+        [HttpPost]
+        public ActionResult OrderIndex(CommonSearchVm<Order> input)
+        {
+            if (input.CurrentPage == 0) //search
+            {
+                input.PerPageSize = 10;
+                input.CurrentPage = 1;
+            }
+            Expression<Func<Order, bool>> searchName;
+            if (string.IsNullOrEmpty(input.Search))
+            {
+                searchName = t => true;
+            }
+            else
+            {
+                searchName = t => t.Customer.Contains(input.Search);
+            }
+            Expression<Func<Order, bool>> category;
+            if (input.SearchTwo == null)
+            {
+                category = c => true;
+            }
+            else
+            {
+                category = c => true;
+            }
+            var lambda = Expression.Lambda<Func<Order, bool>>(Expression.AndAlso(
+            new SwapVisitor(searchName.Parameters[0], category.Parameters[0]).Visit(searchName.Body),
+            category.Body), category.Parameters);
+
+            input.Func = lambda;
+            var model = _homeContainer.GetSearchResult(input, d => d.Id, SortOrder.Descending);
+            return View(model);
         }
     }
 }
