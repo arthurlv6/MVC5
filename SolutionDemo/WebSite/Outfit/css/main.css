@@ -537,6 +537,9 @@ ul.nostyle i {
 #about {
   padding: 100px 0;
 }
+#section {
+  padding: 10px 0;
+}
 #work-process {
   padding: 100px 0 50px;
   background: #20222e url(../images/work-process/bg.jpg) no-repeat 0 0;

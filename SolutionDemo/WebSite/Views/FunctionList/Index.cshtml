@@ -2,8 +2,11 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="container">
-    <h2>Function List</h2>
+<section id="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title text-center wow fadeInDown">Function List</h2>
+        </div>
     <h3 onclick="controlShowTip(this)" style="cursor: pointer">
         Global Server Exception control in Global.asax.cs
     </h3>
@@ -43,7 +46,7 @@
     </h3>
     <p>
         protected override void OnException(ExceptionContext filterContext)
-        <br/>
+        <br />
         {
         <br />
         View("BespokeError").ExecuteResult(ControllerContext);
@@ -62,7 +65,7 @@
         </li>
         <li>
             public string FileName { get; set; }
-            <br/>
+            <br />
             public string Path { get; set; }
             <br />
             public override void ExecuteResult(ControllerContext context)
@@ -108,6 +111,7 @@
             <br />
             }
         </li>
+        <li>@Html.Partial("_ExcelFiles")</li>
     </ol>
     <h3 onclick="controlShowTip(this)" style="cursor: pointer">
         Global action filter for IP restriction
@@ -131,7 +135,7 @@
     </h3>
     <p>
         var cacheKey = string.Format("user_{0}", userId);
-        <br/>
+        <br />
         @("var userLogs = HttpContext.Cache[cacheKey] as List<operationrecord>;")
         <br />
         if (userLogs == null)
@@ -175,23 +179,33 @@
         }
     </p>
     <h3 onclick="controlShowTip(this)" style="cursor: pointer">
-        Universal Search template
+        Universal Search and List template
     </h3>
     <p>
-        <a href="/Home/OrderIndex">Example Link</a>
+        <a href="/Home/OrderIndex">Universal Search and List template Example Link</a>
+    </p>
+    <h3 onclick="controlShowTip(this)" style="cursor: pointer">
+        Image show
+    </h3>
+    <p>
+        <a href="/Order/Index">Image show Example Link</a>
     </p>
 </div>
-@section scripts{
-    <script type="text/javascript">
-        (function ($) {
-            $(".container h3").next().css("display", "none");
-        })(jQuery);
-       
-        function controlShowTip(id) {
 
-            var control = $(id).next();
+</section>
 
-            $(control).slideToggle('swing');
-        }
-    </script>
-  }
+
+    @section scripts{
+        <script type="text/javascript">
+            (function ($) {
+                $(".container h3").next().css("display", "none");
+            })(jQuery);
+
+            function controlShowTip(id) {
+
+                var control = $(id).next();
+
+                $(control).slideToggle('swing');
+            }
+        </script>
+    }
