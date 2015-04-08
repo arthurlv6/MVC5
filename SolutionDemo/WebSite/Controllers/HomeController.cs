@@ -6,15 +6,15 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
-using Business.SubBusinessAccess;
+using Business.Repositories;
 using DataModel.Entities;
 using Business.ViewModels;
 namespace WebSite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHomeContainer _homeContainer;
-        public HomeController(IHomeContainer homeContainer)
+        private readonly IHomeRepository _homeContainer;
+        public HomeController(IHomeRepository homeContainer)
         {
             _homeContainer = homeContainer;
         }

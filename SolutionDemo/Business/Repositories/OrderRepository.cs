@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,9 +10,9 @@ using Business.ViewModels;
 using DataModel.DbContexts;
 using DataModel.Entities;
 
-namespace Business.SubBusinessAccess
+namespace Business.Repositories
 {
-    public interface IOrderContainer
+    public interface IOrderRepository
     {
         IEnumerable<Order> GetOrders();
         void RecordException(ErrorLog input, DemoDbContext dbContext);
@@ -23,11 +24,14 @@ namespace Business.SubBusinessAccess
         void Dispose();
     }
 
-    public class OrderContainer:CommonOperation, IOrderContainer
+    public class OrderRepository:CommonOperation, IOrderRepository
     {
         public IEnumerable<Order> GetOrders()
         {
-            return db.Orders.Take(3);
+            using (var db = new DemoDbContext())
+            {
+                return db.Orders.Take(3).Include(d=>d.OrderProducts);
+            }
         }  
     }
 }

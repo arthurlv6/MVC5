@@ -1,4 +1,4 @@
-using Business.SubBusinessAccess;
+using Business.Repositories;
 using StructureMap;
 using StructureMap.Graph;
 
@@ -12,8 +12,8 @@ namespace WebSite {
                                         scan.TheCallingAssembly();
                                         scan.WithDefaultConventions();
                                     });
-                            x.For<IHomeContainer>().Use<HomeContainer>();
-                            x.For<IOrderContainer>().Use<OrderContainer>();
+                            x.For<IHomeRepository>().Use<HomeRepository>();
+                            x.For<IOrderRepository>().Use<OrderRepository>();
                         });
             return ObjectFactory.Container;
         }

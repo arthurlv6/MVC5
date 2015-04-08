@@ -17,12 +17,7 @@ namespace Business
 {
     public class CommonOperation
     {
-        protected DemoDbContext db;
-
-        public CommonOperation()
-        {
-            db=new DemoDbContext();
-        }
+       
         public static DateTime NewZealandTime
         {
             get
@@ -68,10 +63,12 @@ namespace Business
             Expression<Func<T, TOrderBy>> orderBy, SortOrder sortOrder = SortOrder.Ascending)
             where T : class
         {
+            using (var db=new DemoDbContext())
+            {
                 var result = new CommonSearchVm<T>();
                 List<T> group;
                 int total = db.Set<T>().Count(condition.Func);
-                var totalPages = total/condition.PerPageSize + (total%condition.PerPageSize > 0 ? 1 : 0);
+                var totalPages = total / condition.PerPageSize + (total % condition.PerPageSize > 0 ? 1 : 0);
                 if (condition.CurrentPage > totalPages)
                 {
                     condition.CurrentPage = 1;
@@ -82,7 +79,7 @@ namespace Business
                         db.Set<T>()
                             .Where(condition.Func)
                             .OrderBy(orderBy)
-                            .Skip((condition.CurrentPage - 1)*condition.PerPageSize)
+                            .Skip((condition.CurrentPage - 1) * condition.PerPageSize)
                             .Take(condition.PerPageSize)
                             .ToList();
                 }
@@ -92,7 +89,7 @@ namespace Business
                         db.Set<T>()
                             .Where(condition.Func)
                             .OrderByDescending(orderBy)
-                            .Skip((condition.CurrentPage - 1)*condition.PerPageSize)
+                            .Skip((condition.CurrentPage - 1) * condition.PerPageSize)
                             .Take(condition.PerPageSize)
                             .ToList();
                 }
@@ -102,11 +99,12 @@ namespace Business
                 result.PerPageSize = condition.PerPageSize;
                 result.CurrentPage = condition.CurrentPage;
                 return result;
+            }
         }
 
         public void Dispose()
         {
-            db.Dispose();
+            //db.Dispose();
         }
     }
 }

@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 using DataModel.DbContexts;
 using DataModel.Entities;
 
-namespace Business.SubBusinessAccess
+namespace Business.Repositories
 {
     public class SystemManagement : CommonOperation
     {
         public void UserLoginRecord(OperationRecord input)
         {
+            using (var db=new DemoDbContext())
+            {
                 db.OperationRecords.Add(input);
                 db.SaveChanges();
+            }
         }
+
         public List<OperationRecord> GetLogs(string UserId)
         {
-                return db.OperationRecords.Where(d=>d.UserId==UserId).ToList();
-        } 
+            using (var db = new DemoDbContext())
+            {
+                return db.OperationRecords.Where(d => d.UserId == UserId).ToList();
+            }
+        }
     }
 }

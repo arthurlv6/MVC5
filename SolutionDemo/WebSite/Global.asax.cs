@@ -17,6 +17,7 @@ namespace WebSite
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //throw new Exception();
         }
         protected void Application_Error(object sender, EventArgs e)
         {

@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Business.SubBusinessAccess;
+using Business.Repositories;
 using DataModel.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -18,8 +18,8 @@ namespace WebSite.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private  ApplicationSignInManager _signInManager;
+        private  ApplicationUserManager _userManager;
 
         public AccountController()
         {

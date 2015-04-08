@@ -182,6 +182,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
     <Compile Include="Extension\PagingHelper.cs" />
@@ -379,6 +380,7 @@
     <Folder Include="Areas\WebApi\Models\" />
     <Folder Include="Areas\WebApi\Views\Shared\" />
     <Folder Include="Views\ExcelFiles\" />
+    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

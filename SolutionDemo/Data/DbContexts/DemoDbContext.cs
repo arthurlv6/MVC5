@@ -22,6 +22,7 @@ namespace DataModel.DbContexts
         public DbSet<OperationRecord> OperationRecords { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
+        public DbSet<Product> Products { get; set; }
         public static DemoDbContext Create()
         {
             return new DemoDbContext();

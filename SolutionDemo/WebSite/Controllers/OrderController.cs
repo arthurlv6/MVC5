@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Business.SubBusinessAccess;
+using System.Web.Routing;
+using Business.Repositories;
 
 namespace WebSite.Controllers
 {
     public class OrderController : Controller
     {
-        private IOrderContainer _orderContainer;
-        public OrderController(IOrderContainer orderContainer)
+        private readonly IOrderRepository _orderRepository;
+        public OrderController(IOrderRepository orderRepository)
         {
-            _orderContainer = orderContainer;
+            _orderRepository = orderRepository;
         }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                _orderContainer.Dispose();
+                _orderRepository.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -26,7 +27,7 @@ namespace WebSite.Controllers
         {
             try
             {
-                var data = _orderContainer.GetOrders();
+                var data = _orderRepository.GetOrders();
                 return View(data);
             }
             catch (Exception)

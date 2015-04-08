@@ -12,7 +12,7 @@ namespace DataModel.DbContexts.DemoMigrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"DbContexts\DemoMigrations";
         }
 
