@@ -73,6 +73,13 @@ namespace WebSite.Controllers
         [HttpPost]
         public ActionResult Edit(Product product)
         {
+            var model = _productRepository.GetById(product.Id);
+            if (model == null)
+                return HttpNotFound();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             try
             {
                 // TODO: Add update logic here
