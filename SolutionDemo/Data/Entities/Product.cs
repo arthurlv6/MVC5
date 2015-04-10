@@ -16,5 +16,6 @@ namespace DataModel.Entities
         [DefaultValue(80)]
         public double Cost { get; set; }
         public string Profile { get; set; }
+        public Category Category { get; set; }
     }
 }

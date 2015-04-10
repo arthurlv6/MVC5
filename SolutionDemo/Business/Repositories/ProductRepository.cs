@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,35 +11,61 @@ namespace Business.Repositories
 {
     public interface IProductRepository
     {
-        void Add(Product product);
+         Task AddAsync(Product product);
 
-        void Edit(Product product);
+         Task EditAsync(Product product);
 
-        Product GetById(int id);
+         Task DeleteAsync(int id);
+         Task<Product> GetByIdAsync(int id);
+         Task<List<Product>> GetAllAsync();
     }
 
     public class ProductRepository : CommonOperation, IProductRepository
     {
-        public Product GetById(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
-            return new Product();
+            using (var db = new DemoDbContext())
+            {
+                return await db.Products.FindAsync(id);
+            }
         }
-        public void Edit(Product product)
+        public async Task<List<Product>> GetAllAsync()
+        {
+            using (var db = new DemoDbContext())
+            {
+                var data = await db.Products.Include(d=>d.Category).ToListAsync();
+                return data;
+            }
+        }
+        public async Task EditAsync(Product product)
         {
             using (var db = new DemoDbContext())
             {
                 var updateOne=db.Products.Find(product.Id);
                 updateOne.Name = product.Name;
+                updateOne.Cost = product.Cost;
+                updateOne.Price = product.Price;
                 updateOne.Profile = product.Profile;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
-        public void Add(Product product)
+        public async Task AddAsync(Product product)
         {
             using (var db=new DemoDbContext())
             {
                 db.Products.Add(product);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
+            }
+        }
+
+
+        public async Task DeleteAsync(int id)
+        {
+            using (var db = new DemoDbContext())
+            {
+                var removeEntity= await db.Products.FindAsync(id);
+                db.Products.Remove(removeEntity);
+                await db.SaveChangesAsync();
             }
         }
     }

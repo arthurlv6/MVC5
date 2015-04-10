@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+<section id="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title text-center wow fadeInDown">Index</h2>
+        </div>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Profile)
+                </th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @item.Price.ToString("c")
+                    </td>
+                    <td>
+                        @item.Cost.ToString("c")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Profile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        <a href="#" data-toggle="modal" data-target=@Html.Raw("#productModalDelete" + item.Id)>Delete</a>
+                        <div class="modal fade" id=@Html.Raw("productModalDelete" + item.Id) tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            @Html.Partial("_Delete", item)
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</section>
+
+
+  

@@ -1,0 +1,44 @@
+﻿
+@model Product
+
+<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Are you sure to delete ?</h4>
+        </div>
+        <div class="modal-body">
+            @Model.Name
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" data-id=@Model.Id onclick="Delete(this)" class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
+</div>
+<script>
+    function Delete(e) {
+        var id = $(e).attr("data-id");
+        var requrl = "/Products/_DeleteConfirm/" + id;
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            cashe: false,
+            url: requrl,
+            success: function (data) {
+                //alert(data);
+                if (data == "fail") {
+                    alert("Failed to change data, please try later.");
+                    return;
+                }
+                $("#productModalDelete" + id).modal('hide');
+                //$("#item" + id).hide();
+                $("#productModalDelete" + id).parent().parent().hide();
+            },
+            error: function (failure) {
+                alert(failure.responseText);
+            }
+        });
+    }
+</script>
+

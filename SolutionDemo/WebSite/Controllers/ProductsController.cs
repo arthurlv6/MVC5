@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Business.Repositories;
 using DataModel.Entities;
-
 namespace WebSite.Controllers
 {
     public class ProductsController : Controller
@@ -21,16 +21,13 @@ namespace WebSite.Controllers
             
         }
         // GET: Products
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var data = await _productRepository.GetAllAsync();
+            return View(data);
         }
 
-        // GET: Products/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+    
 
         // GET: Products/Create
         public ActionResult Create()
@@ -40,12 +37,13 @@ namespace WebSite.Controllers
 
         // POST: Products/Create
         [HttpPost]
-        public ActionResult Create(Product product)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(Product product)
         {
             try
             {
                 // TODO: Add insert logic here
-                _productRepository.Add(product);
+                await _productRepository.AddAsync(product);
                 return RedirectToAction("Index");
             }
             catch
@@ -55,9 +53,9 @@ namespace WebSite.Controllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var model = _productRepository.GetById(id);
+            var model = await _productRepository.GetByIdAsync(id);
             if (model == null)
             {
                 //ModelState.AddModelError(string.Empty, "the id does not exist.");
@@ -71,19 +69,19 @@ namespace WebSite.Controllers
 
         // POST: Products/Edit/5
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public async Task<ActionResult> Edit(Product product)
         {
-            var model = _productRepository.GetById(product.Id);
-            if (model == null)
-                return HttpNotFound();
             if (!ModelState.IsValid)
             {
                 return View();
             }
+            var model = await _productRepository.GetByIdAsync(product.Id);
+            if (model == null)
+                return HttpNotFound();
             try
             {
                 // TODO: Add update logic here
-                _productRepository.Edit(product);
+                await _productRepository.EditAsync(product);
 
                 return RedirectToAction("Index");
             }
@@ -93,12 +91,19 @@ namespace WebSite.Controllers
             }
         }
 
-        // GET: Products/Delete/5
-        public ActionResult Delete(int id)
+        [HttpPost]
+        public async Task<JsonResult> _DeleteConfirm(int id)
         {
-            return View();
+            try
+            {
+                await _productRepository.DeleteAsync(id);
+                return Json("done", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json("fail", JsonRequestBehavior.AllowGet);
+            }
         }
-
         // POST: Products/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

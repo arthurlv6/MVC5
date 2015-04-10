@@ -59,6 +59,7 @@
       <DependentUpon>201503090033534_IntialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="DbContexts\DemoMigrations\Configuration.cs" />
+    <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\ErrorLog.cs" />
     <Compile Include="Entities\IdentityModels.cs" />
     <Compile Include="Entities\OperationRecord.cs" />
