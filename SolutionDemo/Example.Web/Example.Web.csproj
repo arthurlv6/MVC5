@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BD9DDAF-52C4-4638-8CE9-A6278716A637}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Example.Web</RootNamespace>
+    <AssemblyName>Example.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Access.cs" />
+    <Compile Include="Models\CategoryM.cs" />
+    <Compile Include="Models\Courses\CourseVm.cs" />
+    <Compile Include="Models\Instructors\InstructorVm.cs" />
+    <Compile Include="Models\ProductDetailM.cs" />
+    <Compile Include="Models\ProductM.cs" />
+    <Compile Include="Models\Registration\RegistrationVmBuilder.cs" />
+    <Compile Include="Models\Security.cs" />
+    <Compile Include="Models\Server.cs" />
+    <Compile Include="Models\VMCustomerEmail.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Icon.png" />
+    <Content Include="Index.html" />
+    <Content Include="OutFit\css\animate.min.css" />
+    <Content Include="OutFit\css\bootstrap.min.css" />
+    <Content Include="OutFit\css\font-awesome.css" />
+    <Content Include="OutFit\css\font-awesome.min.css" />
+    <Content Include="OutFit\css\main.css" />
+    <Content Include="OutFit\css\prettyPhoto.css" />
+    <Content Include="OutFit\css\responsive.css" />
+    <Content Include="OutFit\fonts\fontawesome-webfont.svg" />
+    <Content Include="OutFit\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="OutFit\images\example.png" />
+    <Content Include="OutFit\images\log.jpg" />
+    <Content Include="OutFit\images\Logo.png" />
+    <Content Include="OutFit\images\map.jpg" />
+    <Content Include="OutFit\images\partners\partner1.png" />
+    <Content Include="OutFit\images\partners\partner2.png" />
+    <Content Include="OutFit\images\partners\partner3.png" />
+    <Content Include="OutFit\images\partners\partner4.png" />
+    <Content Include="OutFit\images\partners\partner5.png" />
+    <Content Include="OutFit\images\partners\partner_bg.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="OutFit\images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="OutFit\images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="OutFit\images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="OutFit\images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="OutFit\images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="OutFit\images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="OutFit\images\prettyPhoto\default\loader.gif" />
+    <Content Include="OutFit\images\prettyPhoto\default\sprite.png" />
+    <Content Include="OutFit\images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="OutFit\images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="OutFit\images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="OutFit\images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="OutFit\images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="OutFit\images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="OutFit\images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="OutFit\images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="OutFit\images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="OutFit\images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="OutFit\images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="OutFit\images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="OutFit\images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="OutFit\images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="OutFit\images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="OutFit\images\services\bg_services.jpg" />
+    <Content Include="OutFit\images\services\bg_services.png" />
+    <Content Include="OutFit\images\services\services1.png" />
+    <Content Include="OutFit\images\services\services2.png" />
+    <Content Include="OutFit\images\services\services3.png" />
+    <Content Include="OutFit\images\services\services4.png" />
+    <Content Include="OutFit\images\services\services5.png" />
+    <Content Include="OutFit\images\services\services6.png" />
+    <Content Include="OutFit\images\services\slider-bg.png" />
+    <Content Include="OutFit\images\slider\bg1.jpg" />
+    <Content Include="OutFit\images\slider\bg2.jpg" />
+    <Content Include="OutFit\images\slider\bg3.jpg" />
+    <Content Include="OutFit\images\slider\img1.png" />
+    <Content Include="OutFit\images\slider\img2.png" />
+    <Content Include="OutFit\images\slider\img3.png" />
+    <Content Include="OutFit\images\slider_one.jpg" />
+    <Content Include="OutFit\js\bootstrap.min.js" />
+    <Content Include="OutFit\js\html5shiv.js" />
+    <Content Include="OutFit\js\jquery.isotope.min.js" />
+    <Content Include="OutFit\js\jquery.js" />
+    <Content Include="OutFit\js\jquery.prettyPhoto.js" />
+    <Content Include="OutFit\js\main.js" />
+    <Content Include="OutFit\js\respond.min.js" />
+    <Content Include="OutFit\js\wow.min.js" />
+    <Content Include="OutFit\resource\com_03.apk.png" />
+    <Content Include="OutFit\fonts\fontawesome-webfont.eot" />
+    <Content Include="OutFit\fonts\fontawesome-webfont.ttf" />
+    <Content Include="OutFit\fonts\fontawesome-webfont.woff" />
+    <Content Include="OutFit\fonts\FontAwesome.otf" />
+    <Content Include="OutFit\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="OutFit\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="OutFit\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="OutFit\images\partners\Thumbs.db" />
+    <Content Include="OutFit\images\services\Thumbs.db" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\example.flexibleinventory.com - Web Deploy.pubxml" />
+    <Content Include="Scripts\Contact\contact-controller.js" />
+    <Content Include="Scripts\Contact\contact-repository.js" />
+    <Content Include="Scripts\Home\home-repository.js" />
+    <Content Include="Scripts\Home\home-controller.js" />
+    <Content Include="Scripts\About\about-repository.js" />
+    <Content Include="Scripts\About\about-controller.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\angular-min.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-route-min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\index-module.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="templates\home.html" />
+    <Content Include="templates\about.html" />
+    <Content Include="templates\contact.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63446</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63466/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:63466/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
