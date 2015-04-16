@@ -15,4 +15,6 @@ Funtion List<br>
 
 This is the code first program and to initalize it you need to do execute bellow code.
 
-enable-migrations -ContextTypeName DataLay.DbContexts.DemoDbContext -MigrationsDirectory DbContexts\DemoMigrations add-migration -ConfigurationTypeName DataLay.DbContexts.DemoMigrations.Configuration "IntialCreate" update-database -ConfigurationTypeName DataLay.DbContexts.DemoMigrations.Configuration
+enable-migrations -ContextTypeName DataModel.DbContexts.DemoDbContext -MigrationsDirectory DbContexts\DemoMigrations<br>
+add-migration -ConfigurationTypeName DataModel.DbContexts.DemoMigrations.Configuration "IntialCreate"<br>
+update-database -ConfigurationTypeName DataModel.DbContexts.DemoMigrations.Configuration<br>
