@@ -24,10 +24,10 @@ namespace Business.Repositories
     {
         public async Task<Product> GetByIdAsync(int id)
         {
-            using (var db = new DemoDbContext())
-            {
-                return await db.Products.FindAsync(id);
-            }
+                using (var db = new DemoDbContext())
+                {
+                    return await db.Products.FindAsync(id);
+                }
         }
         public async Task<List<Product>> GetAllAsync()
         {

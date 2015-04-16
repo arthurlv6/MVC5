@@ -58,6 +58,10 @@
     <Compile Include="DbContexts\DemoMigrations\201503090033534_IntialCreate.Designer.cs">
       <DependentUpon>201503090033534_IntialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DbContexts\DemoMigrations\201504160909550_IntialCreate1.cs" />
+    <Compile Include="DbContexts\DemoMigrations\201504160909550_IntialCreate1.Designer.cs">
+      <DependentUpon>201504160909550_IntialCreate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="DbContexts\DemoMigrations\Configuration.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\ErrorLog.cs" />
@@ -78,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DbContexts\DemoMigrations\201503090033534_IntialCreate.resx">
       <DependentUpon>201503090033534_IntialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DbContexts\DemoMigrations\201504160909550_IntialCreate1.resx">
+      <DependentUpon>201504160909550_IntialCreate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
