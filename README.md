@@ -1,7 +1,7 @@
 # MVC5
 Hi , this program is a simple clean MVC structure, which give you a good advice for building up your MVC applications. There are no copyright issue and anyone welcome to copy or modify it. I hope you can get some inspiration from my code. Thanks.
 
-Funtion List<br>
+Function List<br>
 1,Global Server Exception control in Global.asax.cs<br>
 2,Exception control for controllers<br>
 3,To get specific file by overriding ActionResult, take getting excel file for example.<br>
