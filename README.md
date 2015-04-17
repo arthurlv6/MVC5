@@ -12,7 +12,7 @@ Function List<br>
 8,Image show<br>
 9,async feature in the controller and the respository<br>
 10,fully testing the product edit function.<br>
-
+11,MVC5+WebApi2+AngularJS.<br>
 This is the code first program and to initalize it you need to do execute bellow code.
 
 enable-migrations -ContextTypeName DataModel.DbContexts.DemoDbContext -MigrationsDirectory DbContexts\DemoMigrations<br>
