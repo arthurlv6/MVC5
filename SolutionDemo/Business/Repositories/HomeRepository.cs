@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
@@ -49,6 +50,50 @@ namespace Business.Repositories
                 {
                     return false;
                 }
+            }
+        }
+
+        public override CommonSearchVm<T> GetSearchResult<T, TOrderBy>(CommonSearchVm<T> condition, Expression<Func<T, TOrderBy>> orderBy,
+            SortOrder sortOrder = SortOrder.Ascending)
+        {
+            using (var db = new DemoDbContext())
+            {
+                var result = new CommonSearchVm<T>();
+                List<T> group;
+                int total = db.Set<T>().Count(condition.Func);
+                var totalPages = total / condition.PerPageSize + (total % condition.PerPageSize > 0 ? 1 : 0);
+                if (condition.CurrentPage > totalPages)
+                {
+                    condition.CurrentPage = 1;
+                }
+                if (sortOrder == SortOrder.Ascending)
+                {
+                    group =
+                        db.Set<T>()
+                            .Where(condition.Func)
+                            .OrderBy(orderBy)
+                            .Skip((condition.CurrentPage - 1) * condition.PerPageSize)
+                            .Take(condition.PerPageSize)
+                            .Include("OrderProducts")
+                            .ToList();
+                }
+                else
+                {
+                    group =
+                        db.Set<T>()
+                            .Where(condition.Func)
+                            .OrderByDescending(orderBy)
+                            .Skip((condition.CurrentPage - 1) * condition.PerPageSize)
+                            .Take(condition.PerPageSize)
+                            .Include("OrderProducts")
+                            .ToList();
+                }
+                result.Data = group;
+
+                result.TotalPages = totalPages == 0 ? 1 : totalPages;
+                result.PerPageSize = condition.PerPageSize;
+                result.CurrentPage = condition.CurrentPage;
+                return result;
             }
         }
     }

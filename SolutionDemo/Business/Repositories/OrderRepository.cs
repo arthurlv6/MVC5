@@ -30,7 +30,7 @@ namespace Business.Repositories
         {
             using (var db = new DemoDbContext())
             {
-                return db.Orders.Take(3).Include(d=>d.OrderProducts);
+                return db.Orders.Take(3).Include(d=>d.OrderProducts).ToList();
             }
         }  
     }

@@ -59,7 +59,7 @@ namespace Business
             dbContext.Dispose();
         }
 
-        public CommonSearchVm<T> GetSearchResult<T, TOrderBy>(CommonSearchVm<T> condition,
+        public virtual CommonSearchVm<T> GetSearchResult<T, TOrderBy>(CommonSearchVm<T> condition,
             Expression<Func<T, TOrderBy>> orderBy, SortOrder sortOrder = SortOrder.Ascending)
             where T : class
         {
