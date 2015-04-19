@@ -20,10 +20,10 @@ using System.Web.Http.Cors;
 
 namespace ApiServer.Controllers
 {
-    
+    [EnableCorsAttribute("http://localhost:7794", "*", "*")]
     [Authorize]
     [RoutePrefix("api/Account")]
-    [EnableCorsAttribute("http://localhost:7794", "*", "*")]
+    
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";

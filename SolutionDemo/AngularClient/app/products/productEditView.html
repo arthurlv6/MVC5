@@ -16,7 +16,7 @@
                        name="inputProductName"
                        type="text"
                        placeholder="Product Name (required)"
-                       ng-model="vm.product.productName"
+                       ng-model="vm.product.name"
                        required
                        ng-minlength="4"
                        ng-maxlength="12" />
@@ -60,7 +60,7 @@
 
             <div class="col-md-4">
                 <div class="form-control">
-                    {{vm.product.releaseDate|date }}
+                    {{vm.product.createDate|date }}
                 </div>
             </div>
         </div>

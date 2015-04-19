@@ -22,8 +22,8 @@
                     vm.message += response.data.exceptionMessage;
             });
 
-        if (vm.product && vm.product.productId) {
-            vm.title = "Edit: " + vm.product.productName;
+        if (vm.product && vm.product.id) {
+            vm.title = "Edit: " + vm.product.name;
         }
         else {
             vm.title = "New Product";
@@ -31,8 +31,8 @@
 
         vm.submit = function () {
             vm.message = '';
-            if (vm.product.productId) {
-                vm.product.$update({ id: vm.product.productId },
+            if (vm.product.id) {
+                vm.product.$update({ id: vm.product.id },
                     function (data) {
                         vm.message = "... Save Complete";
                     },
