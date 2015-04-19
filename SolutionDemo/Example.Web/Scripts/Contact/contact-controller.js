@@ -1,10 +1,10 @@
 ﻿'use strict';
 
-indexModule.controller("AccountController", function ($scope, accountRepository, $location) {
+indexModule.controller("ContactController", function ($scope, contactRepository, $location) {
     $scope.save = function (student) {
         $scope.errors = [];
-        accountRepository.save(student).$promise.then(
-            function() { $location.url('Registration/Courses'); },
+        contactRepository.save(student).$promise.then(
+            function() { $location.url('Index/Home'); },
             function(response) { $scope.errors = response.data; });
     };
 });

@@ -13,13 +13,37 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSite", "WebSite\WebSite.csproj", "{BE3F787F-B531-4E31-B770-E7CDA3933E0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{EA3C5832-B29C-433A-9706-88D11665B55F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F1D8E9BC-E096-4094-A390-98BC2886AED7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestWebSite", "UnitTestWebSite\UnitTestWebSite.csproj", "{2C2CED75-065A-4C73-AC9E-FCB20B6524C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Web", "Example.Web\Example.Web.csproj", "{1BD9DDAF-52C4-4638-8CE9-A6278716A637}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApiAndAngularJS", "WebApiAndAngularJS", "{8C4A08B3-43A8-4B6C-B066-C1C7E23F5877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiServer", "ApiServer\ApiServer.csproj", "{B3D24ACC-70AA-4A79-BC76-A701561A06A7}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AngularClient", "http://localhost:7794", "{9DEF68CB-1C3A-4A99-AC92-A8D210DA9E6D}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_7794"
+		Debug.AspNetCompiler.PhysicalPath = "AngularClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_7794\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_7794"
+		Release.AspNetCompiler.PhysicalPath = "AngularClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_7794\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "AngularClient\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +63,6 @@ Global
 		{BE3F787F-B531-4E31-B770-E7CDA3933E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE3F787F-B531-4E31-B770-E7CDA3933E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE3F787F-B531-4E31-B770-E7CDA3933E0A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA3C5832-B29C-433A-9706-88D11665B55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA3C5832-B29C-433A-9706-88D11665B55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA3C5832-B29C-433A-9706-88D11665B55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA3C5832-B29C-433A-9706-88D11665B55F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C2CED75-065A-4C73-AC9E-FCB20B6524C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C2CED75-065A-4C73-AC9E-FCB20B6524C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C2CED75-065A-4C73-AC9E-FCB20B6524C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +71,14 @@ Global
 		{1BD9DDAF-52C4-4638-8CE9-A6278716A637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BD9DDAF-52C4-4638-8CE9-A6278716A637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BD9DDAF-52C4-4638-8CE9-A6278716A637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D24ACC-70AA-4A79-BC76-A701561A06A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D24ACC-70AA-4A79-BC76-A701561A06A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D24ACC-70AA-4A79-BC76-A701561A06A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D24ACC-70AA-4A79-BC76-A701561A06A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DEF68CB-1C3A-4A99-AC92-A8D210DA9E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DEF68CB-1C3A-4A99-AC92-A8D210DA9E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DEF68CB-1C3A-4A99-AC92-A8D210DA9E6D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DEF68CB-1C3A-4A99-AC92-A8D210DA9E6D}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,8 +87,9 @@ Global
 		{80F2F2BD-BE0E-4AE3-9E6D-29AEFA2AB915} = {5A562001-11F3-4701-8715-76A29B959EF5}
 		{2D96C390-EED3-42BF-B29C-891F44734B17} = {5A562001-11F3-4701-8715-76A29B959EF5}
 		{BE3F787F-B531-4E31-B770-E7CDA3933E0A} = {94D7D5D7-990F-46B5-B90F-FA20EDBBB45A}
-		{EA3C5832-B29C-433A-9706-88D11665B55F} = {5A562001-11F3-4701-8715-76A29B959EF5}
 		{2C2CED75-065A-4C73-AC9E-FCB20B6524C0} = {F1D8E9BC-E096-4094-A390-98BC2886AED7}
 		{1BD9DDAF-52C4-4638-8CE9-A6278716A637} = {94D7D5D7-990F-46B5-B90F-FA20EDBBB45A}
+		{B3D24ACC-70AA-4A79-BC76-A701561A06A7} = {8C4A08B3-43A8-4B6C-B066-C1C7E23F5877}
+		{9DEF68CB-1C3A-4A99-AC92-A8D210DA9E6D} = {8C4A08B3-43A8-4B6C-B066-C1C7E23F5877}
 	EndGlobalSection
 EndGlobal

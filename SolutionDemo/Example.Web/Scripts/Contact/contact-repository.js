@@ -1,9 +1,9 @@
 ﻿'use strict';
 
-indexModule.factory('accountRepository', function ($resource) {
+indexModule.factory('contactRepository', function ($resource) {
     return {
-        save: function (student) {
-            return $resource('/api/Account').save(student);
+        save: function (contact) {
+            return $resource('/api/Contact').save(contact);
         }
     };
 });

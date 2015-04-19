@@ -1,5 +1,5 @@
 ﻿'use strict';
 
-indexModule.controller("InstructorsController", function ($scope, instructorRepository) {
-    $scope.instructors = instructorRepository.get();
+indexModule.controller("AboutController", function ($scope, aboutRepository) {
+    $scope.instructors = aboutRepository.get();
 });

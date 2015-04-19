@@ -1,7 +1,7 @@
-﻿indexModule.factory('instructorRepository', function ($resource) {
+﻿indexModule.factory('aboutRepository', function ($resource) {
     return {
         get: function() {
-            return $resource('/api/Instructors').query();
+            return $resource('/api/About').query();
         }
     };
 });
