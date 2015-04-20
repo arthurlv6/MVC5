@@ -5,15 +5,15 @@
     <fieldset>
         <legend>Basic Product Information</legend>
         <div class="form-group"
-             ng-class="{'has-error':productForm.inputProductName.$invalid &&
-                                    productForm.inputProductName.$dirty}">
+             ng-class="{'has-error':productForm.inputName.$invalid &&
+                                    productForm.inputName.$dirty}">
             <label class="col-md-2 control-label"
-                   for="inputProductName">Product Name</label>
+                   for="inputName">Product Name</label>
 
             <div class="col-md-4">
                 <input class="form-control"
-                       id="inputProductName"
-                       name="inputProductName"
+                       id="inputName"
+                       name="inputName"
                        type="text"
                        placeholder="Product Name (required)"
                        ng-model="vm.product.name"
@@ -22,18 +22,63 @@
                        ng-maxlength="12" />
             </div>
             <span class="help-block has-error">
-                <span ng-show="productForm.inputProductName.$error.required">
+                <span ng-show="productForm.inputName.$error.required">
                     Product name is required.
                 </span>
-                <span ng-show="productForm.inputProductName.$error.minlength">
+                <span ng-show="productForm.inputName.$error.minlength">
                     Product name must be at least 4 characters in length.
                 </span>
-                <span ng-show="productForm.inputProductName.$error.maxlength">
+                <span ng-show="productForm.inputName.$error.maxlength">
                     Product name cannot exceed 12 characters in length.
                 </span>
             </span>
         </div>
+        <div class="form-group"
+             ng-class="{'has-error':productForm.inputPrice.$invalid &&
+                                    productForm.inputPrice.$dirty}">
+            <label class="col-md-2 control-label"
+                   for="inputPrice">Price</label>
 
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputPrice"
+                       name="inputPrice"
+                       type="text"
+                       placeholder="Product Price (required)"
+                       ng-model="vm.product.price"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12" />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="productForm.inputPrice.$error.required">
+                    Product price is required.
+                </span>
+            </span>
+        </div>
+        <div class="form-group"
+             ng-class="{'has-error':productForm.inputCost.$invalid &&
+                                    productForm.inputCost.$dirty}">
+            <label class="col-md-2 control-label"
+                   for="inputCost">Price</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputCost"
+                       name="inputCost"
+                       type="text"
+                       placeholder="Product Cost (required)"
+                       ng-model="vm.product.cost"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12" />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="productForm.inputCost.$error.required">
+                    Product cost is required.
+                </span>
+            </span>
+        </div>
         <div class="form-group"
              ng-class="{'has-error':productForm.inputProductCode.$invalid &&
                                     productForm.inputProductCode.$dirty}">

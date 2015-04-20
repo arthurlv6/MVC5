@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -34,7 +35,7 @@ namespace ApiServer.Controllers
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
-        [Authorize()]
+        //[Authorize()]
         public IHttpActionResult Get(int id)
         {
             try
@@ -114,6 +115,24 @@ namespace ApiServer.Controllers
                     return NotFound();
                 }
                 return Ok();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine("====================");
+                    Console.WriteLine(
+                        "Entity {0} in state {1} has validation errors:",
+                        error.Entry.Entity.GetType().Name,
+                        error.Entry.State);
+                    foreach (var ve in error.ValidationErrors)
+                    {
+                        Console.WriteLine("\tProperty: {0}, Error: {1}", ve.PropertyName, ve.ErrorMessage);
+                    }
+                    Console.WriteLine();
+                }
+
+                return InternalServerError(ex);
             }
             catch (Exception ex)
             {

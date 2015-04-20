@@ -59,7 +59,8 @@ namespace ApiServer.Repositories
                 updateItem.Cost = product.Cost;
                 updateItem.Price = product.Price;
                 updateItem.Profile = product.Profile;
-                updateItem.CreateDate = product.CreateDate;
+                updateItem.ProductCode = product.ProductCode;
+                updateItem.CreateDate = DateTime.Now;
                 db.SaveChanges();
             }
             return product;

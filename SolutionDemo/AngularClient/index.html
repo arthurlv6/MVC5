@@ -48,8 +48,9 @@
              ng-include="'app/products/productEditView.html'"></div>
         <div ng-if="vm.isLoggedIn()"
              ng-include="'app/products/productListView.html'"></div>
+        <div ng-if="!vm.isLoggedIn()" ng-include="'app/products/productEditView.html'"></div>
     </div>
- 
+    
     <!-- Library Scripts -->
     <script src="scripts/angular.js"></script>
     <script src="Scripts/angular-resource.js"></script>
