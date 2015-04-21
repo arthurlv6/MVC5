@@ -32,6 +32,45 @@ namespace Business.Repositories
             {
                 return db.Orders.Take(3).Include(d=>d.OrderProducts).ToList();
             }
-        }  
+        }
+        public void Edit(Order order)
+        {
+            ThrowOperationException(() =>
+            {
+                using (var db = new DemoDbContext())
+                {
+                    var updateOne = db.Orders.Find(order.Id);
+                    updateOne.Operator = order.Operator;
+                    updateOne.OtherFee = order.OtherFee;
+                    db.SaveChanges();
+                }
+            });
+            
+        }
+        public void Add(Order order)
+        {
+            ThrowOperationException(() =>
+            {
+                using (var db = new DemoDbContext())
+                {
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+                }
+            });
+        }
+
+
+        public void Delete(int id)
+        {
+            ThrowOperationException(() =>
+            {
+                using (var db = new DemoDbContext())
+                {
+                    var removeEntity = db.Orders.Find(id);
+                    db.Orders.Remove(removeEntity);
+                    db.SaveChanges();
+                }
+            });
+        }
     }
 }

@@ -21,10 +21,13 @@ namespace Business.Repositories
 
         public List<OperationRecord> GetLogs(string UserId)
         {
-            using (var db = new DemoDbContext())
+            return ThrowOperationException(() =>
             {
-                return db.OperationRecords.Where(d => d.UserId == UserId).ToList();
-            }
+                using (var db = new DemoDbContext())
+                {
+                    return db.OperationRecords.Where(d => d.UserId == UserId).ToList();
+                }
+            });
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
@@ -102,6 +103,68 @@ namespace Business
             }
         }
 
+        protected void ThrowOperationException(Action action)
+        {
+            try
+            {
+               action.Invoke();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                StringBuilder sb=new StringBuilder();
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine("====================");
+                    Console.WriteLine(
+                        "Entity {0} in state {1} has validation errors:",
+                        error.Entry.Entity.GetType().Name,
+                        error.Entry.State);
+                    foreach (var ve in error.ValidationErrors)
+                    {
+                        //Console.WriteLine();
+                        sb.Append(string.Format("\tProperty: {0}, Error: {1}", ve.PropertyName, ve.ErrorMessage));
+                    }
+                    Console.WriteLine();
+                }
+                throw new DbEntityValidationException(sb.ToString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Please contact your database manager.");
+            }
+
+        }
+        protected List<T> ThrowOperationException<T>(Func<List<T>> func) where T : class,new()
+        {
+            try
+            {
+               return func.Invoke();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine("====================");
+                    Console.WriteLine(
+                        "Entity {0} in state {1} has validation errors:",
+                        error.Entry.Entity.GetType().Name,
+                        error.Entry.State);
+                    foreach (var ve in error.ValidationErrors)
+                    {
+                        //Console.WriteLine();
+                        sb.Append(string.Format("\tProperty: {0}, Error: {1}", ve.PropertyName, ve.ErrorMessage));
+                    }
+                    Console.WriteLine();
+                }
+                throw new DbEntityValidationException(sb.ToString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Please contact your database manager.");
+            }
+
+        }
         public void Dispose()
         {
             //db.Dispose();
