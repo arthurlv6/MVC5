@@ -51,9 +51,10 @@
 
             userAccount.login.loginUser(vm.userData,
                 function (data) {
-                    vm.message = "";
+                    
                     vm.password = "";
                     currentUser.setProfile(vm.userData.userName, data.access_token);
+                    vm.message = "";
                 },
                 function (response) {
                     vm.password = "";

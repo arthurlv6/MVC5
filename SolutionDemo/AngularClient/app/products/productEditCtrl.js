@@ -4,14 +4,26 @@
     angular
         .module("productManagement")
         .controller("ProductEditCtrl",
-                     ProductEditCtrl);
+        ["product",
+            "$state",
+            ProductEditCtrl]);
 
-    function ProductEditCtrl(productResource) {
+    function ProductEditCtrl(product, $state) {
+        
         var vm = this;
-        vm.product = {};
+
+        vm.product = product;
+
+        if (vm.product && vm.product.id) {
+            vm.title = "Edit: " + vm.product.productName;
+        }
+        else {
+            vm.title = "New Product";
+        }
+        //vm.product = {};
         vm.message = '';
 
-        productResource.get({ id: 4 },
+        productResource.get({ id: product.id },
             function (data) {
                 vm.product = data;
                 vm.originalProduct = angular.copy(data);
