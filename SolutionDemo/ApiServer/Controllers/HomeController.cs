@@ -15,8 +15,8 @@ namespace ApiServer.Controllers
     {
         public ActionResult Index()
         {
+            return RedirectToAction("Index", "Help", new { Area = "" });
             ViewBag.Title = "Home Page";
-
             return View();
         }
         public async Task<ActionResult> Test()

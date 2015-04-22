@@ -20,7 +20,6 @@ using System.Web.Http.Cors;
 
 namespace ApiServer.Controllers
 {
-    [EnableCorsAttribute("http://localhost:7794", "*", "*")]
     [Authorize]
     [RoutePrefix("api/Account")]
     

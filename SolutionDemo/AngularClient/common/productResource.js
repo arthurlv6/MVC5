@@ -1,6 +1,5 @@
 ﻿(function () {
     "use strict";
-
     angular
         .module("common.services")
         .factory("productResource",
@@ -17,7 +16,7 @@
                 },
 
                 'save': {
-                    method: 'Post',
+                    method: 'POST',
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 },
 

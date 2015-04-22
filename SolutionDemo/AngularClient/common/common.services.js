@@ -6,6 +6,7 @@
                     ["ngResource"])
     	.constant("appSettings",
         {
+            //serverPath: "http://webapi.arthurcv.com"
             serverPath: "http://localhost:7737"
         });
 }());

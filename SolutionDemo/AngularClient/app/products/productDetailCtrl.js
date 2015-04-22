@@ -1,6 +1,4 @@
-/**
- * Created by Deb on 8/26/2014.
- */
+
 (function () {
     "use strict";
 
