@@ -3,7 +3,7 @@
       novalidate
       ng-controller="ProductEditCtrl as vm">
     <fieldset>
-        <legend>Basic Product Information</legend>
+        <legend>{{vm.title}}</legend>
         <div class="form-group"
              ng-class="{'has-error':productForm.inputName.$invalid &&
                                     productForm.inputName.$dirty}">
@@ -43,12 +43,11 @@
                 <input class="form-control"
                        id="inputPrice"
                        name="inputPrice"
-                       type="text"
+                       type="number"
                        placeholder="Product Price (required)"
                        ng-model="vm.product.price"
                        required
-                       ng-minlength="4"
-                       ng-maxlength="12" />
+                       />
             </div>
             <span class="help-block has-error">
                 <span ng-show="productForm.inputPrice.$error.required">
@@ -60,18 +59,16 @@
              ng-class="{'has-error':productForm.inputCost.$invalid &&
                                     productForm.inputCost.$dirty}">
             <label class="col-md-2 control-label"
-                   for="inputCost">Price</label>
+                   for="inputCost">Cost</label>
 
             <div class="col-md-4">
                 <input class="form-control"
                        id="inputCost"
                        name="inputCost"
-                       type="text"
+                       type="number"
                        placeholder="Product Cost (required)"
                        ng-model="vm.product.cost"
-                       required
-                       ng-minlength="4"
-                       ng-maxlength="12" />
+                       required/>
             </div>
             <span class="help-block has-error">
                 <span ng-show="productForm.inputCost.$error.required">
@@ -91,6 +88,7 @@
                        type="text"
                        placeholder="Product Code (required)"
                        ng-model="vm.product.productCode"
+                       ng-minlength="6"
                        required>
             </div>
             <span class="help-block has-error"

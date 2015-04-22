@@ -73,7 +73,7 @@ namespace ApiServer.Controllers
                 {
                     return BadRequest("Product cannot be null");
                 }
-
+                product.CreateDate = DateTime.Now;
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);

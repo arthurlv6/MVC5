@@ -21,12 +21,12 @@ namespace ApiServer.Controllers
         }
         public async Task<ActionResult> Test()
         {
-            var data = new Product(){Cost = 1200,Price = 1300,CreateDate = DateTime.Now,Name = "Medical",ProductCode = "AABCCC"};
-            string link = "api/Products/1";
+            var data = new Product(){Cost = 1200,Price = 1300,CreateDate = DateTime.Now,Name = "Goods",ProductCode = "AABCCC"};
+            string link = "api/Products";
             string json = JsonConvert.SerializeObject(data);
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await GetClient().PutAsync(link, content);
+            var response = await GetClient().PostAsync(link, content);
             if (response.IsSuccessStatusCode)
             {
                 var ret = response.Content.ReadAsStringAsync();

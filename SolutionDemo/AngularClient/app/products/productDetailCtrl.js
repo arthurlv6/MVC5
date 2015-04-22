@@ -5,7 +5,7 @@
     "use strict";
 
     angular
-        .module("productManagement")
+        .module("main")
         .controller("ProductDetailCtrl",
                     ["product",
                      ProductDetailCtrl]);

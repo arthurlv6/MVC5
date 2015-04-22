@@ -1,14 +1,14 @@
 (function () {
     "use strict";
-    var app = angular.module("productManagement",
+    var app = angular.module("main",
         ["common.services",
             "ui.router"]);
 
     app.config(["$stateProvider",
             "$urlRouterProvider",
             function ($stateProvider, $urlRouterProvider) {
-                $urlRouterProvider.otherwise("/");
-
+                $urlRouterProvider.otherwise("/products");
+                  
                 $stateProvider
                     .state("home", {
                         url: "/",
@@ -29,15 +29,15 @@
                         //abstract: true,
                         url: "/products/edit/:id",
                         templateUrl: "app/products/productEditView.html",
-                        controller: "ProductEditCtrl as vm",
-                        resolve: {
-                            productResource: "productResource",
+                        controller: "ProductEditCtrl as vm"
+                        //resolve: {
+                        //    productResource: "productResource",
 
-                            product: function (productResource, $stateParams) {
-                                var id = $stateParams.id;
-                                return productResource.get({ id: id }).$promise;
-                            }
-                        }
+                        //    product: function (productResource, $stateParams) {
+                        //        var pid = $stateParams.id;
+                        //        return productResource.get({ id: pid }).$promise;
+                        //    }
+                        //}
                     })
                     .state("productDetail", {
                         url: "/products/:productId",
