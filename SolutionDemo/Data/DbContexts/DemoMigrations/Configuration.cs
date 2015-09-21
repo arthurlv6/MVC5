@@ -18,7 +18,7 @@ namespace DataModel.DbContexts.DemoMigrations
 
         protected override void Seed(DataModel.DbContexts.DemoDbContext context)
         {
-            return;
+            //return;
             for (int i = 0; i < 50; i++)
             {
                 var order = new Order() { Customer = "Customer_" + i, CreateDate = DateTime.Now, CustomerPhone = "0210578463", Discount = 15, DeliveryFee = 20 };

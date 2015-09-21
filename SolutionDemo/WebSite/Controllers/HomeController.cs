@@ -27,7 +27,7 @@ namespace WebSite.Controllers
             base.Dispose(disposing);
         }
 
-        [RequireHttps]
+        //[RequireHttps]
         public ActionResult Index()
         {
             //throw new Exception(message: "An exception occured");
